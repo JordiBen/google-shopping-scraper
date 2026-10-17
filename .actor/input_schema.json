@@ -1,0 +1,210 @@
+{
+  "title": "Google Shopping Scraper",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Scrape Google Shopping results for any search: product title, price, old price, currency, merchant, rating, review count, shipping, returns, image and Google product link. 46 countries, sort by price or rating, price range filter.",
+  "properties": {
+    "queries": {
+      "title": "Search queries",
+      "type": "array",
+      "editor": "stringList",
+      "description": "What you would type into Google Shopping, one search per line, e.g. 'air fryer' or 'nike air max 90'.",
+      "prefill": [
+        "air fryer"
+      ],
+      "maxItems": 5000
+    },
+    "countryCode": {
+      "title": "Country",
+      "type": "string",
+      "editor": "select",
+      "description": "Which Google Shopping country to search. Prices come in that country's currency, from its merchants.",
+      "enum": [
+        "us",
+        "gb",
+        "ca",
+        "au",
+        "nz",
+        "ie",
+        "in",
+        "sg",
+        "za",
+        "ph",
+        "my",
+        "ae",
+        "de",
+        "at",
+        "ch",
+        "fr",
+        "be",
+        "es",
+        "it",
+        "nl",
+        "pt",
+        "pl",
+        "se",
+        "no",
+        "dk",
+        "fi",
+        "cz",
+        "gr",
+        "hu",
+        "ro",
+        "tr",
+        "il",
+        "sa",
+        "jp",
+        "kr",
+        "tw",
+        "hk",
+        "id",
+        "th",
+        "vn",
+        "br",
+        "mx",
+        "ar",
+        "cl",
+        "co",
+        "ua"
+      ],
+      "enumTitles": [
+        "United States",
+        "United Kingdom",
+        "Canada",
+        "Australia",
+        "New Zealand",
+        "Ireland",
+        "India",
+        "Singapore",
+        "South Africa",
+        "Philippines",
+        "Malaysia",
+        "United Arab Emirates",
+        "Germany",
+        "Austria",
+        "Switzerland",
+        "France",
+        "Belgium",
+        "Spain",
+        "Italy",
+        "Netherlands",
+        "Portugal",
+        "Poland",
+        "Sweden",
+        "Norway",
+        "Denmark",
+        "Finland",
+        "Czechia",
+        "Greece",
+        "Hungary",
+        "Romania",
+        "Turkey",
+        "Israel",
+        "Saudi Arabia",
+        "Japan",
+        "South Korea",
+        "Taiwan",
+        "Hong Kong",
+        "Indonesia",
+        "Thailand",
+        "Vietnam",
+        "Brazil",
+        "Mexico",
+        "Argentina",
+        "Chile",
+        "Colombia",
+        "Ukraine"
+      ],
+      "default": "us",
+      "prefill": "us"
+    },
+    "maxResultsPerQuery": {
+      "title": "Max products per search",
+      "type": "integer",
+      "description": "Stop after this many products for each search (1-1000). Google shows about 30-40 new products per page.",
+      "default": 100,
+      "prefill": 100,
+      "minimum": 1,
+      "maximum": 1000
+    },
+    "sortBy": {
+      "title": "Sort by",
+      "type": "string",
+      "editor": "select",
+      "description": "Google Shopping sort order.",
+      "enum": [
+        "relevance",
+        "price_asc",
+        "price_desc",
+        "rating"
+      ],
+      "enumTitles": [
+        "Relevance (Google default)",
+        "Price: low to high",
+        "Price: high to low",
+        "Rating: high to low"
+      ],
+      "default": "relevance"
+    },
+    "minPrice": {
+      "title": "Min price",
+      "type": "integer",
+      "description": "Only products at or above this price, in the country's currency. Leave empty for no limit.",
+      "minimum": 0,
+      "sectionCaption": "Filters"
+    },
+    "maxPrice": {
+      "title": "Max price",
+      "type": "integer",
+      "description": "Only products at or below this price, in the country's currency. Leave empty for no limit.",
+      "minimum": 0
+    },
+    "skipUsed": {
+      "title": "Skip used and refurbished",
+      "type": "boolean",
+      "description": "Drop products marked pre-owned, used or refurbished (not charged).",
+      "default": false
+    },
+    "startUrls": {
+      "title": "Google Shopping URLs (optional)",
+      "type": "array",
+      "editor": "requestListSources",
+      "description": "Paste Google Shopping search URLs (google.com/search?...&udm=28 or tbm=shop), e.g. with filters you set in the browser. The query, country and filters are taken from the URL.",
+      "sectionCaption": "Advanced"
+    },
+    "languageCode": {
+      "title": "Interface language",
+      "type": "string",
+      "editor": "textfield",
+      "description": "Google interface language, e.g. 'en', 'de', 'pt-BR'. Empty = the country's main language. Affects labels like shipping and returns, not the products."
+    },
+    "fillWithOtherSorts": {
+      "title": "Go deeper when Google runs out",
+      "type": "boolean",
+      "description": "Google stops after a few pages. When you ask for more products than one sort order gives, the Actor also reads the other sort orders (price, rating) and adds the new products. Duplicates are never returned or charged.",
+      "default": true
+    },
+    "strictPriceFilter": {
+      "title": "Enforce price range on results",
+      "type": "boolean",
+      "description": "Google's price filter is a hint. With this on, products outside your min/max price are dropped (not charged).",
+      "default": true
+    },
+    "maxResultsTotal": {
+      "title": "Max products in total",
+      "type": "integer",
+      "description": "Stop the whole run after this many products across all searches. 0 = no limit.",
+      "default": 0,
+      "minimum": 0
+    },
+    "maxConcurrency": {
+      "title": "Max parallel requests",
+      "type": "integer",
+      "description": "1-20. Higher is faster.",
+      "default": 8,
+      "minimum": 1,
+      "maximum": 20
+    }
+  },
+  "required": []
+}

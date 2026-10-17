@@ -1,0 +1,202 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": true,
+    "required": [
+      "query",
+      "title",
+      "scrapedAt"
+    ],
+    "properties": {
+      "query": {
+        "type": "string"
+      },
+      "country": {
+        "type": "string"
+      },
+      "position": {
+        "type": "integer"
+      },
+      "productId": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "catalogId": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "groupId": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "offerId": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "title": {
+        "type": "string"
+      },
+      "brand": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "price": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "priceText": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "oldPrice": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "discountPercent": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "currency": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "merchant": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "multipleSellers": {
+        "type": "boolean"
+      },
+      "rating": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "reviewsCount": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "shipping": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "freeShipping": {
+        "type": "boolean"
+      },
+      "returns": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "condition": {
+        "type": "string"
+      },
+      "image": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "productUrl": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "priceIsFrom": {
+        "type": "boolean"
+      },
+      "labels": {
+        "type": "array"
+      },
+      "sortOrder": {
+        "type": "string"
+      },
+      "googleShoppingUrl": {
+        "type": "string"
+      },
+      "scrapedAt": {
+        "type": "string"
+      }
+    }
+  },
+  "views": {
+    "overview": {
+      "title": "Products",
+      "transformation": {
+        "fields": [
+          "image",
+          "title",
+          "price",
+          "currency",
+          "oldPrice",
+          "merchant",
+          "rating",
+          "reviewsCount",
+          "shipping",
+          "productUrl",
+          "query",
+          "position"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "image": {
+            "label": "Image",
+            "format": "image"
+          },
+          "title": {
+            "label": "Product"
+          },
+          "price": {
+            "label": "Price",
+            "format": "number"
+          },
+          "oldPrice": {
+            "label": "Was",
+            "format": "number"
+          },
+          "reviewsCount": {
+            "label": "Reviews",
+            "format": "number"
+          },
+          "productUrl": {
+            "label": "Google product page",
+            "format": "link"
+          }
+        }
+      }
+    }
+  }
+}

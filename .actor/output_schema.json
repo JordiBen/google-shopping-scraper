@@ -1,0 +1,18 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Google Shopping scraper output",
+  "properties": {
+    "results": {
+      "type": "string",
+      "title": "Products",
+      "description": "One item per product: title, price, currency, merchant, rating, reviews, shipping, image and Google product link.",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
+    },
+    "summary": {
+      "type": "string",
+      "title": "Run summary",
+      "description": "Run statistics and the effective input.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
+    }
+  }
+}
